@@ -1,4 +1,4 @@
-package com.jad.pizza;
+package com.jad.pizzeria.pizza;
 
 public abstract class Pizza {
     private final String name;

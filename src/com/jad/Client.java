@@ -1,24 +1,21 @@
 package com.jad;
 
-import com.jad.pizza.FourCheeses;
-import com.jad.pizza.Neapolitan;
-import com.jad.pizza.Pizza;
-import com.jad.pizza.Roman;
+import com.jad.pizzeria.PizzaFactory;
 
 import java.util.Random;
 
 public class Client {
     public void eat() {
-        Pizza pizza;
+        com.jad.pizzeria.pizza.Pizza pizza;
         switch (new Random().nextInt(3)) {
             case 1:
-                pizza = new Neapolitan();
+                pizza = PizzaFactory.NeapolitanFactory.make();
                 break;
             case 2:
-                pizza = new Roman();
+                pizza = PizzaFactory.RomanFactory.make();
                 break;
             default:
-                pizza = new FourCheeses();
+                pizza = PizzaFactory.FourCheeseFactory.make();
                 break;
         }
         System.out.println("Je mange une " + pizza);

@@ -1,4 +1,4 @@
-package com.jad.pizza;
+package com.jad.pizzeria.pizza;
 
 public class FourCheeses extends Pizza {
     public FourCheeses() {
