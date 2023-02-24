@@ -5,15 +5,23 @@ import java.util.Properties;
 
 public class SamplesPropertiesConnector {
     private static final String FileName = "src/data/samples.properties";
+    private static SamplesPropertiesConnector Instance = null;
     private Properties properties = null;
 
-    public SamplesPropertiesConnector() {
+    private SamplesPropertiesConnector() {
         try {
             SamplesPropertiesConnector.createSamples();
             this.load();
         } catch (IOException exception) {
             this.manageException(exception);
         }
+    }
+
+    public static SamplesPropertiesConnector getInstance() {
+        if (SamplesPropertiesConnector.Instance == null) {
+            SamplesPropertiesConnector.Instance = new SamplesPropertiesConnector();
+        }
+        return SamplesPropertiesConnector.Instance;
     }
 
     private void load() throws IOException {

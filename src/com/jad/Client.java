@@ -6,7 +6,7 @@ public class Client {
     private final SamplesPropertiesConnector samples;
 
     public Client() {
-        this.samples = new SamplesPropertiesConnector();
+        this.samples = SamplesPropertiesConnector.getInstance();
     }
 
     public void work() {
