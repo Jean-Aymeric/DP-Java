@@ -5,23 +5,15 @@ import java.util.Properties;
 
 public class SamplesPropertiesConnector {
     private static final String FileName = "src/data/samples.properties";
-    private static SamplesPropertiesConnector Instance = null;
     private Properties properties = null;
 
-    private SamplesPropertiesConnector() {
+    public SamplesPropertiesConnector() {
         try {
             SamplesPropertiesConnector.createSamples();
             this.load();
         } catch (IOException exception) {
             this.manageException(exception);
         }
-    }
-
-    public static SamplesPropertiesConnector getInstance() {
-        if (SamplesPropertiesConnector.Instance == null) {
-            SamplesPropertiesConnector.Instance = new SamplesPropertiesConnector();
-        }
-        return SamplesPropertiesConnector.Instance;
     }
 
     private void load() throws IOException {
@@ -42,7 +34,7 @@ public class SamplesPropertiesConnector {
         properties.setProperty("7", "Aenean et fermentum lectus.");
         properties.setProperty("8", "Aenean dapibus risus ex, sed ultrices dui suscipit tempus. Suspendisse non felis erat.");
         properties.setProperty("9", "Duis massa libero, laoreet sed felis at, maximus convallis lectus.");
-        properties.setProperty("10", "Sed purus nisi, posuere in metus sit amet, posuere finibus eros. ");
+        properties.setProperty("10", "Sed purus nisi, posuere in metus sit amet, posuere finibus eros.");
         properties.store(output, null);
     }
 
