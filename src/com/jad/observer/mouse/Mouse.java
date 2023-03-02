@@ -3,8 +3,10 @@ package com.jad.observer.mouse;
 import com.jad.observer.AnimalThread;
 import com.jad.observer.House;
 
+import java.util.Observable;
+
 public class Mouse extends AnimalThread {
-    private final static int WaitingTime = 100;
+    private final static int WaitingTime = 1000;
 
     private MouseState state;
     private final House house;

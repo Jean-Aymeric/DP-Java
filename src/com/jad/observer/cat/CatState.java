@@ -16,6 +16,6 @@ public enum CatState {
     }
 
     public static CatState GetRandomState() {
-        return new Random().nextInt(5) == 0 ? CatState.Awake : CatState.Asleep;
+        return new Random().nextInt(2) == 0 ? CatState.Awake : CatState.Asleep;
     }
 }

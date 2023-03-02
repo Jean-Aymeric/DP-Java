@@ -5,6 +5,8 @@ import com.jad.observer.House;
 import com.jad.observer.mouse.Mouse;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 public class Cat extends AnimalThread {
     private final static int WaitingTime = 5000;
@@ -17,7 +19,6 @@ public class Cat extends AnimalThread {
         this.house = house;
         this.state = CatState.Asleep;
     }
-
     @Override
     public String toString() {
         return this.state.getLook();
