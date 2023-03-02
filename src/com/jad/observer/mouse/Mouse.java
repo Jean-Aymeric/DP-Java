@@ -2,8 +2,6 @@ package com.jad.observer.mouse;
 
 import com.jad.observer.AnimalThread;
 
-import java.util.Random;
-
 public class Mouse extends AnimalThread {
     private final static int WaitingTime = 1000;
 
@@ -22,5 +20,13 @@ public class Mouse extends AnimalThread {
     @Override
     protected void runExtended() {
 
+    }
+
+    public void dance() {
+        this.state = MouseState.Dancing;
+    }
+
+    public void hide() {
+        this.state = MouseState.Hidden;
     }
 }
