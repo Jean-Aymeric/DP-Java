@@ -2,6 +2,7 @@ package com.jad.observer;
 
 public abstract class AnimalThread extends Thread {
     private final int waitingTime;
+    private boolean alive = true;
 
     protected AnimalThread(final int waitingTime) {
         this.waitingTime = waitingTime;
@@ -9,7 +10,7 @@ public abstract class AnimalThread extends Thread {
 
     @Override
     public void run() {
-        for(;;) {
+        while(this.alive) {
             this.runExtended();
             System.out.println(this);
             try {
@@ -21,4 +22,8 @@ public abstract class AnimalThread extends Thread {
     }
 
     protected abstract void runExtended();
+
+    public final void die() {
+        this.alive = false;
+    }
 }
