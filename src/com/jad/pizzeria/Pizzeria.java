@@ -9,6 +9,7 @@ import com.jad.pizzeria.drink.factory.ColaFactory;
 import com.jad.pizzeria.drink.factory.DrinkFactory;
 import com.jad.pizzeria.drink.factory.SparklingWaterFactory;
 import com.jad.pizzeria.pizza.Pizza;
+import com.jad.pizzeria.pizza.ProxyPizzeria;
 import com.jad.pizzeria.pizza.factory.FourCheesesFactory;
 import com.jad.pizzeria.pizza.factory.NeapolitanFactory;
 import com.jad.pizzeria.pizza.factory.PizzaFactory;
@@ -16,7 +17,7 @@ import com.jad.pizzeria.pizza.factory.RomanFactory;
 
 import java.util.ArrayList;
 
-public class Pizzeria {
+public class Pizzeria implements IPizzeria {
     private static Pizzeria instance = null;
     private final ArrayList<PizzaFactory> pizzaFactories = new ArrayList<>();
     private final ArrayList<DessertFactory> dessertFactories = new ArrayList<>();
@@ -34,13 +35,14 @@ public class Pizzeria {
         this.dessertFactories.add(new DonutFactory());
     }
 
-    public static Pizzeria getInstance() {
+    public static IPizzeria getInstance() {
         if (Pizzeria.instance == null) {
             Pizzeria.instance = new Pizzeria();
         }
-        return Pizzeria.instance;
+        return new ProxyPizzeria(Pizzeria.instance);
     }
 
+    @Override
     public Product make(String productName) {
         Product product = this.makePizza(productName);
         if (product != null) {
@@ -53,14 +55,17 @@ public class Pizzeria {
         return this.makeDessert(productName);
     }
 
+    @Override
     public Pizza makePizza(String pizzaName) {
         return this.getPizzaFactory(pizzaName).make();
     }
 
+    @Override
     public Drink makeDrink(String drinkName) {
         return this.getDrinkFactory(drinkName).make();
     }
 
+    @Override
     public Dessert makeDessert(String dessertName) {
         return this.getDessertFactory(dessertName).make();
     }
@@ -74,14 +79,17 @@ public class Pizzeria {
         return null;
     }
 
+    @Override
     public PizzaFactory getPizzaFactory(String pizzaNameMade) {
         return (PizzaFactory) Pizzeria.GetProductFactory(pizzaNameMade, this.pizzaFactories);
     }
 
+    @Override
     public DrinkFactory getDrinkFactory(String drinkNameMade) {
         return (DrinkFactory) Pizzeria.GetProductFactory(drinkNameMade, this.drinkFactories);
     }
 
+    @Override
     public DessertFactory getDessertFactory(String dessertNameMade) {
         return (DessertFactory) Pizzeria.GetProductFactory(dessertNameMade, this.dessertFactories);
     }
@@ -94,46 +102,57 @@ public class Pizzeria {
         return menu;
     }
 
+    @Override
     public ArrayList<String> getPizzaMenu() {
         return Pizzeria.GetMenuFromFactories(this.pizzaFactories);
     }
 
+    @Override
     public ArrayList<String> getDrinkMenu() {
         return Pizzeria.GetMenuFromFactories(this.drinkFactories);
     }
 
+    @Override
     public ArrayList<String> getDessertMenu() {
         return Pizzeria.GetMenuFromFactories(this.dessertFactories);
     }
 
+    @Override
     public PizzaFactory getFourCheeseFactory() {
         return this.getPizzaFactory("4 fromages");
     }
 
+    @Override
     public PizzaFactory getNeapolitanFactory() {
         return this.getPizzaFactory("Napolitaine");
     }
 
+    @Override
     public PizzaFactory getRomanFactory() {
         return this.getPizzaFactory("Romaines");
     }
 
+    @Override
     public void addPizzaFactory(PizzaFactory pizzaFactory) {
         this.pizzaFactories.add(pizzaFactory);
     }
 
+    @Override
     public DessertFactory getCookieFactory() {
         return this.getDessertFactory("cookie");
     }
 
+    @Override
     public DessertFactory getDonutFactory() {
         return this.getDessertFactory("donut");
     }
 
+    @Override
     public DrinkFactory getColaFactory() {
         return this.getDrinkFactory("cola");
     }
 
+    @Override
     public DrinkFactory getSparklingWaterFactory() {
         return this.getDrinkFactory("eau gazeuse");
     }

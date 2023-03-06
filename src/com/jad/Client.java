@@ -1,6 +1,6 @@
 package com.jad;
 
-import com.jad.pizzeria.Pizzeria;
+import com.jad.pizzeria.IPizzeria;
 import com.jad.pizzeria.dessert.Dessert;
 import com.jad.pizzeria.drink.Drink;
 import com.jad.pizzeria.pizza.Pizza;
@@ -8,7 +8,7 @@ import com.jad.pizzeria.pizza.Pizza;
 import java.util.Random;
 
 public class Client {
-    public void eat(final Pizzeria pizzeria) {
+    public void eat(final IPizzeria pizzeria) {
         Pizza pizza = pizzeria.makePizza(pizzeria.getPizzaMenu().get(new Random().nextInt(pizzeria.getPizzaMenu().size())));
         Drink drink = pizzeria.makeDrink(pizzeria.getDrinkMenu().get(new Random().nextInt(pizzeria.getDrinkMenu().size())));
         Dessert dessert = pizzeria.makeDessert(pizzeria.getDessertMenu().get(new Random().nextInt(pizzeria.getDessertMenu().size())));

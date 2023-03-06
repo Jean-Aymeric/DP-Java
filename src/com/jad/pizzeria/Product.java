@@ -2,6 +2,7 @@ package com.jad.pizzeria;
 
 public abstract class Product {
     private final String name;
+
     private final String product;
 
     protected Product(final String product, final String name) {
@@ -16,5 +17,9 @@ public abstract class Product {
     @Override
     public final String toString() {
         return this.getName();
+    }
+
+    public String getProduct() {
+        return this.product;
     }
 }
