@@ -1,5 +1,7 @@
 package com.jad.character;
 
+import com.jad.character.behaviorhit.BehaviorHit;
+import com.jad.character.behaviorhit.BehaviorHitLikeATench;
 import com.jad.character.characteristic.Characteristic;
 import com.jad.dice.Dice;
 
@@ -8,16 +10,22 @@ import java.util.Hashtable;
 public class Character {
     private final Hashtable<Characteristic, Integer>characteristics = new Hashtable<>();
     private String name;
+    private BehaviorHit behaviorHit;
 
     public Character() {
         this("Inconnu");
     }
 
     public Character(final String name) {
+        this(name, new BehaviorHitLikeATench());
+    }
+
+    public Character(final String name, final BehaviorHit behaviorHit) {
         for (Characteristic characteristic : Characteristic.values()) {
             this.characteristics.put(characteristic, Dice.D6.roll(3));
         }
         this.name = name;
+        this.behaviorHit = new BehaviorHitLikeATench();
     }
 
     public int getCharacteristic(Characteristic characteristic) {
@@ -47,6 +55,14 @@ public class Character {
     }
 
     public String hit() {
-        return "Je tape comme une tanche : " + this.getHitPoints();
+        return this.behaviorHit.hit();
+    }
+
+    public BehaviorHit getBehaviorHit() {
+        return this.behaviorHit;
+    }
+
+    public void setBehaviorHit(final BehaviorHit behaviorHit) {
+        this.behaviorHit = behaviorHit;
     }
 }
