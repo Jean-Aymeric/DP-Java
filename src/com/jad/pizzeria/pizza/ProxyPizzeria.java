@@ -12,6 +12,7 @@ import com.jad.pizzeria.pizza.factory.PizzaFactory;
 import java.util.ArrayList;
 
 public class ProxyPizzeria implements IPizzeria {
+    private static final int NbMaxPizzas = 5;
     private final Pizzeria pizzeria;
     private int nbPizzasMade;
 
@@ -20,39 +21,62 @@ public class ProxyPizzeria implements IPizzeria {
         this.nbPizzasMade = 0;
     }
 
+    private Product check(Product product) {
+        if (product.getProduct().equals("Pizza")) {
+            return check((Pizza) product);
+        }
+        return product;
+    }
+
+    private Pizza check(Pizza pizza) {
+        this.nbPizzasMade += (! pizza.getName().equals("Végétarienne")) ? 1 : 0;
+        if (nbPizzasMade > ProxyPizzeria.NbMaxPizzas) {
+            return this.pizzeria.makePizza("Végétarienne");
+        }
+        return pizza;
+    }
+
+    private Dessert check(Dessert dessert) {
+        return dessert;
+    }
+
+    private Drink check(Drink drink) {
+        return drink;
+    }
+
     @Override
     public Product make(final String productName) {
-        return this.pizzeria.make(productName);
+        return this.check(this.pizzeria.make(productName));
     }
 
     @Override
     public Pizza makePizza(final String pizzaName) {
-        return this.pizzeria.makePizza(pizzaName);
+        return this.check(this.pizzeria.makePizza(pizzaName));
     }
 
     @Override
     public Drink makeDrink(final String drinkName) {
-        return this.pizzeria.makeDrink(drinkName);
+        return this.check(this.pizzeria.makeDrink(drinkName));
     }
 
     @Override
     public Dessert makeDessert(final String dessertName) {
-        return this.pizzeria.makeDessert(dessertName);
+        return this.check(this.pizzeria.makeDessert(dessertName));
     }
 
     @Override
     public PizzaFactory getPizzaFactory(final String pizzaNameMade) {
-        return this.pizzeria.getPizzaFactory(pizzaNameMade);
+        return null;
     }
 
     @Override
     public DrinkFactory getDrinkFactory(final String drinkNameMade) {
-        return this.pizzeria.getDrinkFactory(drinkNameMade);
+        return null;
     }
 
     @Override
     public DessertFactory getDessertFactory(final String dessertNameMade) {
-        return this.pizzeria.getDessertFactory(dessertNameMade);
+        return null;
     }
 
     @Override
@@ -72,17 +96,17 @@ public class ProxyPizzeria implements IPizzeria {
 
     @Override
     public PizzaFactory getFourCheeseFactory() {
-        return this.pizzeria.getFourCheeseFactory();
+        return null;
     }
 
     @Override
     public PizzaFactory getNeapolitanFactory() {
-        return this.pizzeria.getNeapolitanFactory();
+        return null;
     }
 
     @Override
     public PizzaFactory getRomanFactory() {
-        return this.pizzeria.getRomanFactory();
+        return null;
     }
 
     @Override
@@ -92,21 +116,21 @@ public class ProxyPizzeria implements IPizzeria {
 
     @Override
     public DessertFactory getCookieFactory() {
-        return this.pizzeria.getCookieFactory();
+        return null;
     }
 
     @Override
     public DessertFactory getDonutFactory() {
-        return this.pizzeria.getDonutFactory();
+        return null;
     }
 
     @Override
     public DrinkFactory getColaFactory() {
-        return this.pizzeria.getColaFactory();
+        return null;
     }
 
     @Override
     public DrinkFactory getSparklingWaterFactory() {
-        return this.pizzeria.getSparklingWaterFactory();
+        return null;
     }
 }

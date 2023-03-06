@@ -11,12 +11,12 @@ public abstract class Product {
     }
 
     public final String getName() {
-        return this.product + " " + this.name;
+        return this.name;
     }
 
     @Override
     public final String toString() {
-        return this.getName();
+        return this.getProduct() + " " + this.getName();
     }
 
     public String getProduct() {

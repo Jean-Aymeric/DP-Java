@@ -10,10 +10,7 @@ import com.jad.pizzeria.drink.factory.DrinkFactory;
 import com.jad.pizzeria.drink.factory.SparklingWaterFactory;
 import com.jad.pizzeria.pizza.Pizza;
 import com.jad.pizzeria.pizza.ProxyPizzeria;
-import com.jad.pizzeria.pizza.factory.FourCheesesFactory;
-import com.jad.pizzeria.pizza.factory.NeapolitanFactory;
-import com.jad.pizzeria.pizza.factory.PizzaFactory;
-import com.jad.pizzeria.pizza.factory.RomanFactory;
+import com.jad.pizzeria.pizza.factory.*;
 
 import java.util.ArrayList;
 
@@ -27,6 +24,7 @@ public class Pizzeria implements IPizzeria {
         this.pizzaFactories.add(new FourCheesesFactory());
         this.pizzaFactories.add(new NeapolitanFactory());
         this.pizzaFactories.add(new RomanFactory());
+        this.pizzaFactories.add(new VegetarianFactory());
 
         this.drinkFactories.add(new ColaFactory());
         this.drinkFactories.add(new SparklingWaterFactory());
