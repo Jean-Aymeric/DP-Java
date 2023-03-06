@@ -2,10 +2,10 @@ package com.jad.observer.mouse;
 
 import com.jad.observer.AnimalThread;
 import com.jad.observer.House;
+import com.jad.observer.Observable;
+import com.jad.observer.Observer;
 
-import java.util.Observable;
-
-public class Mouse extends AnimalThread {
+public class Mouse extends AnimalThread implements Observer {
     private final static int WaitingTime = 1000;
 
     private MouseState state;
@@ -15,6 +15,7 @@ public class Mouse extends AnimalThread {
         super(Mouse.WaitingTime);
         this.house = house;
         this.state = MouseState.Hidden;
+        this.house.getCat().addObserver(this);
     }
 
     @Override
@@ -24,11 +25,6 @@ public class Mouse extends AnimalThread {
 
     @Override
     protected void runExtended() {
-        if (this.house.getCat().isAwake()) {
-            this.hide();
-        } else {
-            this.dance();
-        }
     }
 
     public void dance() {
@@ -41,5 +37,14 @@ public class Mouse extends AnimalThread {
 
     public boolean isHidden() {
         return this.state == MouseState.Hidden;
+    }
+
+    @Override
+    public void update(final Observable observable) {
+        if (this.house.getCat().isAwake()) {
+            this.hide();
+        } else {
+            this.dance();
+        }
     }
 }

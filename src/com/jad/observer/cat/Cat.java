@@ -2,17 +2,16 @@ package com.jad.observer.cat;
 
 import com.jad.observer.AnimalThread;
 import com.jad.observer.House;
+import com.jad.observer.Observable;
+import com.jad.observer.Observer;
 import com.jad.observer.mouse.Mouse;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 public class Cat extends AnimalThread {
     private final static int WaitingTime = 5000;
-
     private CatState state;
     private final House house;
+    private Observable observable = new Observable();
 
     public Cat(House house) {
         super(Cat.WaitingTime);
@@ -26,7 +25,7 @@ public class Cat extends AnimalThread {
 
     @Override
     protected void runExtended() {
-        this.state = CatState.GetRandomState();
+        this.setState(CatState.GetRandomState());
         if (this.isAwake()) {
             for (Mouse mouse : this.house.getMice()) {
                 if (! mouse.isHidden()) {
@@ -38,5 +37,20 @@ public class Cat extends AnimalThread {
 
     public boolean isAwake() {
         return this.state == CatState.Awake;
+    }
+
+    public void addObserver(Observer observer) {
+        this.observable.add(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        this.observable.remove(observer);
+    }
+
+    public void setState(final CatState state) {
+        if (state != this.state) {
+            this.state = state;
+            this.observable.notifyObservers();
+        }
     }
 }
