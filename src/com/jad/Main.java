@@ -1,6 +1,7 @@
 package com.jad;
 
 import com.jad.character.Character;
+import com.jad.character.behaviorhit.BehaviorHit;
 import com.jad.character.behaviorhit.BehaviorHitLikeABuzzard;
 import com.jad.character.behaviorhit.BehaviorHitLikeAGod;
 
@@ -10,9 +11,16 @@ public class Main {
         Character jad = new Character("Jad");
         System.out.println(jad);
         System.out.println(jad.hit());
-        jad.setBehaviorHit(new BehaviorHitLikeABuzzard());
+        jad.setBehaviorHit(new BehaviorHitLikeABuzzard(jad));
         System.out.println(jad.hit());
-        jad.setBehaviorHit(new BehaviorHitLikeAGod());
+        jad.setBehaviorHit(new BehaviorHitLikeAGod(jad));
         System.out.println(jad.hit());
+
+        jad.setBehaviorHit(new BehaviorHit() {
+            @Override
+            public String hit() {
+                return "je tape comme un truc étrange tapé à la volée " + this.getCharacter().getHitPoints();
+            }
+        });
     }
 }

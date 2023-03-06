@@ -25,7 +25,8 @@ public class Character {
             this.characteristics.put(characteristic, Dice.D6.roll(3));
         }
         this.name = name;
-        this.behaviorHit = new BehaviorHitLikeATench();
+        this.behaviorHit = behaviorHit;
+        behaviorHit.setCharacter(this);
     }
 
     public int getCharacteristic(Characteristic characteristic) {
@@ -64,5 +65,8 @@ public class Character {
 
     public void setBehaviorHit(final BehaviorHit behaviorHit) {
         this.behaviorHit = behaviorHit;
+        if (this.behaviorHit.getCharacter() != this) {
+            this.behaviorHit.setCharacter(this);
+        }
     }
 }
