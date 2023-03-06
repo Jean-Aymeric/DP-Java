@@ -13,7 +13,11 @@ public abstract class BehaviorHit {
         this.character = null;
     }
 
-    public abstract String hit();
+    public String hit() {
+        return this.hitExtended() + " " + this.getCharacter().getHitPoints();
+    }
+
+    public abstract String hitExtended();
 
     public Character getCharacter() {
         return character;

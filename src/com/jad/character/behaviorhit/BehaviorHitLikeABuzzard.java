@@ -11,7 +11,7 @@ public class BehaviorHitLikeABuzzard extends BehaviorHit {
     }
 
     @Override
-    public String hit() {
-        return "je tape comme une buse " + this.getCharacter().getHitPoints();
+    public String hitExtended() {
+        return "je tape comme une buse";
     }
 }

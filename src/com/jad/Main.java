@@ -18,8 +18,8 @@ public class Main {
 
         jad.setBehaviorHit(new BehaviorHit() {
             @Override
-            public String hit() {
-                return "je tape comme un truc étrange tapé à la volée " + this.getCharacter().getHitPoints();
+            public String hitExtended() {
+                return "je tape comme un truc étrange tapé à la volée";
             }
         });
     }

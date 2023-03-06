@@ -11,7 +11,7 @@ public class BehaviorHitLikeATench extends BehaviorHit {
     }
 
     @Override
-    public String hit() {
-        return "je tape comme une tanche " + this.getCharacter().getHitPoints();
+    public String hitExtended() {
+        return "je tape comme une tanche";
     }
 }
