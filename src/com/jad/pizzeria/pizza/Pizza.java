@@ -1,18 +1,9 @@
 package com.jad.pizzeria.pizza;
 
-public abstract class Pizza {
-    private final String name;
+import com.jad.pizzeria.Product;
 
+public abstract class Pizza extends Product {
     protected Pizza(final String name) {
-        this.name = "Pizza " + name;
-    }
-
-    public final String getName() {
-        return name;
-    }
-
-    @Override
-    public final String toString() {
-        return this.getName();
+        super("Pizza", name);
     }
 }

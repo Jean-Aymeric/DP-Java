@@ -1,10 +1,10 @@
-package com.jad.pizzeria;
+package com.jad.pizzeria.pizza.factory;
 
 import com.jad.pizzeria.pizza.FourCheeses;
 import com.jad.pizzeria.pizza.Pizza;
 
-final class FourCheesesFactory extends PizzaFactory {
-    FourCheesesFactory() {
+public final class FourCheesesFactory extends PizzaFactory {
+    public FourCheesesFactory() {
         super("4 fromages");
     }
 

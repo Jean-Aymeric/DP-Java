@@ -1,10 +1,10 @@
-package com.jad.pizzeria;
+package com.jad.pizzeria.pizza.factory;
 
 import com.jad.pizzeria.pizza.Pizza;
 import com.jad.pizzeria.pizza.Roman;
 
-final class RomanFactory extends PizzaFactory {
-    RomanFactory() {
+public final class RomanFactory extends PizzaFactory {
+    public RomanFactory() {
         super("Romaine");
     }
 
