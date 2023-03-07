@@ -35,7 +35,7 @@ public class HouseFacade implements IHouse {
     public void turnOffAll() {
         this.turnOffAllLights();
         this.turnOffAllHifis();
-        this.turnOffAllHeatings();
+        this.turnOffAllHeaters();
         this.turnOffAllHomeCinemas();
     }
 
@@ -68,13 +68,13 @@ public class HouseFacade implements IHouse {
         }
     }
 
-    public void turnOnAllHeatings() {
+    public void turnOnAllHeaters() {
         for (final Room room : this.house.getRooms()) {
             room.getHeating().turnOn();
         }
     }
 
-    public void turnOffAllHeatings() {
+    public void turnOffAllHeaters() {
         for (final Room room : this.house.getRooms()) {
             room.getHeating().turnOff();
         }

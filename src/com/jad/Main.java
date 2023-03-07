@@ -1,11 +1,9 @@
 package com.jad;
 
 import com.jad.house.HouseFacade;
-import com.jad.house.IHouse;
 import com.jad.house.heating.HeatingType;
 import com.jad.house.hifi.Hifi;
 import com.jad.house.homecinema.HomeCinema;
-import com.jad.house.House;
 import com.jad.house.room.Room;
 
 public class Main {

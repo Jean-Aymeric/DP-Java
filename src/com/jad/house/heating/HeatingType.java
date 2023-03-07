@@ -1,7 +1,7 @@
 package com.jad.house.heating;
 
 public enum HeatingType {
-    ELECTRIC("Electrique"),
+    ELECTRIC("Électrique"),
     GAS("Gaz"),
     SOLAR("Solaire"),
     WOOD("Bois");
