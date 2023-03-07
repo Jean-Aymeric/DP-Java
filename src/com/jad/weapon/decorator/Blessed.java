@@ -1,0 +1,25 @@
+package com.jad.weapon.decorator;
+
+import com.jad.weapon.AttackType;
+import com.jad.weapon.IWeapon;
+
+public class Blessed extends AbstractWeaponDecorator {
+    public Blessed(final IWeapon weapon) {
+        super(weapon);
+    }
+
+    @Override
+    public String getDecoratedName() {
+        return " béni";
+    }
+
+    @Override
+    public int getDecoratedDamage() {
+        return 2;
+    }
+
+    @Override
+    public AttackType getDecoratedAttackType() {
+        return AttackType.Magic;
+    }
+}
