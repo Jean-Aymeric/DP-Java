@@ -1,10 +1,10 @@
-package com.jad.homecinema;
+package com.jad.house.hifi;
 
-public class HomeCinema {
+public class Hifi {
     private final String name;
     private int volume = 0;
 
-    public HomeCinema(final String name) {
+    public Hifi(final String name) {
         this.name = name;
     }
 

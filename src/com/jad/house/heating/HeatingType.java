@@ -1,4 +1,4 @@
-package com.jad.heating;
+package com.jad.house.heating;
 
 public enum HeatingType {
     ELECTRIC("Electrique"),

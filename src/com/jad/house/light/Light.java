@@ -1,4 +1,4 @@
-package com.jad.light;
+package com.jad.house.light;
 
 public class Light {
     private boolean on = false;

@@ -1,15 +1,16 @@
 package com.jad;
 
-import com.jad.heating.HeatingType;
-import com.jad.hifi.Hifi;
-import com.jad.homecinema.HomeCinema;
+import com.jad.house.IHouse;
+import com.jad.house.heating.HeatingType;
+import com.jad.house.hifi.Hifi;
+import com.jad.house.homecinema.HomeCinema;
 import com.jad.house.House;
-import com.jad.room.Room;
+import com.jad.house.room.Room;
 
 public class Main {
 
     public static void main(String[] args) {
-        House myHouse = new House();
+        IHouse myHouse = new House();
         myHouse.addRoom(new Room("Cuisine", HeatingType.ELECTRIC));
         myHouse.addRoom(new Room("Chambre à coucher", HeatingType.ELECTRIC));
         myHouse.addRoom(new Room("Salon", HeatingType.ELECTRIC));
@@ -21,6 +22,5 @@ public class Main {
         myHouse.getRoom("Salon").setHifi(new Hifi("Méga son HiFi"));
         myHouse.getRoom("Cuisine").setHifi(new Hifi("Petite radio FM"));
         myHouse.getRoom("Salle de bain").setHifi(new Hifi("Enceinte bluetooth"));
-
     }
 }

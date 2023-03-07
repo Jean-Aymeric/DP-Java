@@ -1,10 +1,10 @@
-package com.jad.room;
+package com.jad.house.room;
 
-import com.jad.heating.Heating;
-import com.jad.heating.HeatingType;
-import com.jad.hifi.Hifi;
-import com.jad.homecinema.HomeCinema;
-import com.jad.light.Light;
+import com.jad.house.heating.Heating;
+import com.jad.house.heating.HeatingType;
+import com.jad.house.hifi.Hifi;
+import com.jad.house.homecinema.HomeCinema;
+import com.jad.house.light.Light;
 
 public class Room {
     private final String name;
