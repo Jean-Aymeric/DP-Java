@@ -11,7 +11,7 @@ public class BehaviorHitLikeATench extends BehaviorHit {
     }
 
     @Override
-    public String hitExtended() {
+    public final String hitExtended() {
         return "je tape comme une tanche";
     }
 }

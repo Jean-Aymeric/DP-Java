@@ -10,11 +10,11 @@ public enum Dice {
         this.nbSides = nbSides;
     }
 
-    public int roll() {
+    public final int roll() {
         return new Random().nextInt(nbSides) + 1;
     }
 
-    public int roll(int nbDice) {
+    public final int roll(int nbDice) {
         int result = 0;
         for(int i = 0; i < nbDice; i++) {
             result += this.roll();

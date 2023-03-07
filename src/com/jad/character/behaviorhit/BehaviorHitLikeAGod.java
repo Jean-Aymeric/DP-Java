@@ -11,7 +11,7 @@ public class BehaviorHitLikeAGod extends BehaviorHit {
     }
 
     @Override
-    public String hitExtended() {
+    public final String hitExtended() {
         return "je tape comme un dieu";
     }
 }

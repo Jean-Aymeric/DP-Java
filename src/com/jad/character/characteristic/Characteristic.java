@@ -9,12 +9,12 @@ public enum Characteristic {
         this.name = name;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return this.name.substring(0,3);
     }
 }
