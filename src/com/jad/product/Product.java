@@ -13,47 +13,62 @@ public abstract class Product implements IProduct {
         this.height = height;
         this.width = width;
         this.description = description;
-        this.image = new char[height][width];
+        this.resetImage();
     }
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     @Override
     public void setHeight(final int height) {
-        this.height = height;
+        if ((height >= 0) && (height != this.height)) {
+            this.height = height;
+            this.resetImage();
+        }
     }
 
     @Override
     public int getWidth() {
-        return width;
+        return this.width;
     }
 
     @Override
     public void setWidth(final int width) {
-        this.width = width;
+        if ((width >= 0) && (width != this.width)) {
+            this.width = width;
+            this.resetImage();
+        }
+    }
+
+    private void resetImage() {
+        this.image = new char[height][width];
     }
 
     @Override
     public char getPixel(int row, int column) {
-        return image[row][column];
+        if ((row >= 0) && (row < this.height) && (column >= 0) && (column < this.width)) {
+            return this.image[row][column];
+        }
+        return Product.EmptyPixel;
     }
 
     @Override
     public void setPixel(int row, int column, char pixel) {
-        image[row][column] = pixel;
+        if ((row >= 0) && (row < this.height) && (column >= 0) && (column < this.width)) {
+            this.image[row][column] = pixel;
+        }
     }
 
     @Override
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     @Override
@@ -63,18 +78,19 @@ public abstract class Product implements IProduct {
 
     @Override
     public String getImage() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                sb.append(image[i][j]);
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.width; j++) {
+                result.append(this.image[i][j]);
             }
-            sb.append("\n");
+            result.append("\n");
         }
-        return sb.toString();
+        return result.toString();
     }
 
     @Override
     public void draw() {
-        System.out.println(getImage());
+        System.out.println(this.getImage());
     }
+
 }

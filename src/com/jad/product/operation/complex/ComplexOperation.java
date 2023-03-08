@@ -1,8 +1,12 @@
 package com.jad.product.operation.complex;
 
 import com.jad.product.IProduct;
+import com.jad.product.Product;
 import com.jad.product.composite.CompositeProduct;
 import com.jad.product.operation.Operation;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public abstract class ComplexOperation extends Operation {
     protected ComplexOperation(final String name) {
@@ -11,15 +15,23 @@ public abstract class ComplexOperation extends Operation {
 
     public IProduct execute(final IProduct... products) {
         CompositeProduct result = new CompositeProduct("", 0, 0, "");
-        StringBuilder description = new StringBuilder();
-        for(IProduct product : products) {
-            description.append(product.getDescription()).append(", ");
+        result.setDescription(this.getName() + Arrays.stream(products).map(IProduct::getDescription).collect(Collectors.joining(", ", "[\n", "\n]")));
+        this.setNewProductSize(result, products);
+        for (int column = 0; column < result.getWidth(); column++) {
+            for (int row = 0; row < result.getHeight(); row++) {
+                if (this.isApplicable(row, column, products)) {
+                    result.setPixel(row, column, this.getPixelTransformation(row, column, products));
+                } else {
+                    result.setPixel(row, column, Product.EmptyPixel);
+                }
+            }
         }
-        result.setDescription(description + ", " + this.getName());
         return result;
     }
 
-    protected abstract boolean isApplicable(final IProduct product, final int row, final int column);
+    protected abstract boolean isApplicable(final int row, final int column, final IProduct... products);
 
-    protected abstract char getPixelTransformation(final char pixel);
+    protected abstract char getPixelTransformation(final int row, final int column, final IProduct... products);
+
+    protected abstract void setNewProductSize(final CompositeProduct result, final IProduct... products);
 }
