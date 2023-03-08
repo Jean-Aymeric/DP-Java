@@ -9,10 +9,10 @@ public class EmptyCircle extends LeafProduct {
 
     @Override
     protected void buildImage(final char color) {
-        for (int column = 0; column < getHeight(); column++) {
-            for (int row = 0; row < getWidth(); row++) {
-                if ((((column == 0) || (column == getHeight() - 1) || (row == 0) || (row == getWidth() - 1)))
-                        && ! (((column == 0) || (column == getHeight() - 1)) && ((row == 0) || (row == getWidth() - 1)))) {
+        for (int column = 0; column < getWidth(); column++) {
+            for (int row = 0; row < getHeight(); row++) {
+                if ((((column == 0) || (column == getWidth() - 1) || (row == 0) || (row == getHeight() - 1)))
+                        && ! (((column == 0) || (column == getWidth() - 1)) && ((row == 0) || (row == getHeight() - 1)))) {
                     this.setPixel(row, column, color);
                 } else {
                     this.setPixel(row, column, Product.EmptyPixel);

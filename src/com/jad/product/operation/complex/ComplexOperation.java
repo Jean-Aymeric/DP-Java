@@ -2,7 +2,6 @@ package com.jad.product.operation.complex;
 
 import com.jad.product.IProduct;
 import com.jad.product.Product;
-import com.jad.product.composite.CompositeProduct;
 import com.jad.product.operation.Operation;
 
 import java.util.Arrays;
@@ -14,7 +13,7 @@ public abstract class ComplexOperation extends Operation {
     }
 
     public IProduct execute(final IProduct... products) {
-        CompositeProduct result = new CompositeProduct("", 0, 0, "");
+        Product result = new Product("", 0, 0, "");
         result.setDescription(this.getName() + Arrays.stream(products).map(IProduct::getDescription).collect(Collectors.joining(", ", "[\n", "\n]")));
         this.setNewProductSize(result, products);
         for (int column = 0; column < result.getWidth(); column++) {
@@ -33,5 +32,5 @@ public abstract class ComplexOperation extends Operation {
 
     protected abstract char getPixelTransformation(final int row, final int column, final IProduct... products);
 
-    protected abstract void setNewProductSize(final CompositeProduct result, final IProduct... products);
+    protected abstract void setNewProductSize(final IProduct result, final IProduct... products);
 }

@@ -1,6 +1,9 @@
 package com.jad.product;
 
-public abstract class Product implements IProduct {
+import com.jad.interpreter.RecipeContext;
+import com.jad.interpreter.RecipeExpression;
+
+public class Product implements IProduct {
     private final String name;
     private int height;
     private int width;
@@ -8,12 +11,44 @@ public abstract class Product implements IProduct {
     private char[][] image;
     public static final char EmptyPixel = '-';
 
-    protected Product(final String name, final int height, final int width, final String description) {
+    public Product(final String name, final int height, final int width, final String description) {
         this.name = name;
         this.height = height;
         this.width = width;
         this.description = description;
         this.resetImage();
+    }
+
+    public Product(final Product other) {
+        this(other.name, other.height, other.width, other.description);
+        this.copyImage(other);
+    }
+
+    public Product(final String name) {
+        this(name, 0, 0, "");
+    }
+
+    public Product() {
+        this("");
+    }
+
+    public Product(final String name, final RecipeExpression recipe) {
+        this( name, 0, 0, "");
+        RecipeContext context = new RecipeContext();
+        recipe.interpret(context);
+        this.height = context.getProduct().getHeight();
+        this.width = context.getProduct().getWidth();
+        this.resetImage();
+        this.description = context.getProduct().getDescription();
+        this.copyImage(context.getProduct());
+    }
+
+    protected void copyImage(final IProduct other) {
+        for (int row = 0; row < this.height; row++) {
+            for (int column = 0; column < this.width; column++) {
+                this.image[row][column] = other.getPixel(row, column);
+            }
+        }
     }
 
     @Override
@@ -79,9 +114,9 @@ public abstract class Product implements IProduct {
     @Override
     public String getImage() {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.width; j++) {
-                result.append(this.image[i][j]);
+        for (int row = 0; row < this.height; row++) {
+            for (int column = 0; column < this.width; column++) {
+                result.append(this.image[row][column]);
             }
             result.append("\n");
         }
@@ -92,5 +127,4 @@ public abstract class Product implements IProduct {
     public void draw() {
         System.out.println(this.getImage());
     }
-
 }

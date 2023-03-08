@@ -2,7 +2,6 @@ package com.jad.product.operation.complex;
 
 import com.jad.product.IProduct;
 import com.jad.product.Product;
-import com.jad.product.composite.CompositeProduct;
 
 public class StickLeftToRight extends ComplexOperation{
     public StickLeftToRight() {
@@ -27,7 +26,7 @@ public class StickLeftToRight extends ComplexOperation{
     }
 
     @Override
-    protected void setNewProductSize(CompositeProduct result, final IProduct... products) {
+    protected void setNewProductSize(IProduct result, final IProduct... products) {
         int newHeight = 0;
         int newWidth = 0;
         for(IProduct product : products) {

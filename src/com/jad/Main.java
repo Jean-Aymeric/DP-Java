@@ -1,7 +1,11 @@
 package com.jad;
 
+import com.jad.interpreter.ComplexOperationExpression;
+import com.jad.interpreter.ProductExpression;
+import com.jad.interpreter.RecipeContext;
 import com.jad.product.IProduct;
 import com.jad.product.Product;
+import com.jad.product.composite.TicTacToe;
 import com.jad.product.leaf.*;
 import com.jad.product.operation.complex.Stack;
 import com.jad.product.operation.complex.StickLeftToRight;
@@ -25,5 +29,15 @@ public class Main {
         p.draw();
 
         System.out.println(p.getDescription());
+
+        RecipeContext context = new RecipeContext();
+
+        new ComplexOperationExpression(new Stack(),
+                new ProductExpression(new FilledCircle('U')),
+                new ProductExpression(new EmptyCircle('O'))
+        ).interpret(context);
+
+        context.getProduct().draw();
+        new TicTacToe().draw();
     }
 }

@@ -2,7 +2,6 @@ package com.jad.product.operation.complex;
 
 import com.jad.product.IProduct;
 import com.jad.product.Product;
-import com.jad.product.composite.CompositeProduct;
 
 import java.util.Arrays;
 import java.util.ListIterator;
@@ -35,7 +34,7 @@ public class Stack extends ComplexOperation{
     }
 
     @Override
-    protected void setNewProductSize(CompositeProduct result, final IProduct... products) {
+    protected void setNewProductSize(IProduct result, final IProduct... products) {
         int maxHeight = 0;
         int maxWidth = 0;
         for(IProduct product : products) {

@@ -1,6 +1,6 @@
 package com.jad.product;
 
-public interface IProduct {
+public interface IProduct{
     String getName();
 
     int getHeight();

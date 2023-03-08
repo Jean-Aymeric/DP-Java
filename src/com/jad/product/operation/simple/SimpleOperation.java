@@ -1,7 +1,7 @@
 package com.jad.product.operation.simple;
 
 import com.jad.product.IProduct;
-import com.jad.product.composite.CompositeProduct;
+import com.jad.product.Product;
 import com.jad.product.operation.Operation;
 
 public abstract class SimpleOperation extends Operation {
@@ -10,7 +10,7 @@ public abstract class SimpleOperation extends Operation {
     }
 
    public IProduct execute(final IProduct product) {
-        CompositeProduct result = new CompositeProduct(product.getName(), product.getHeight(), product.getWidth(), product.getDescription());
+       Product result = new Product(product.getName(), product.getHeight(), product.getWidth(), product.getDescription());
         for (int column = 0; column < product.getWidth(); column++) {
             for (int row = 0; row < product.getHeight(); row++) {
                 if (this.isApplicable(product, row, column)) {
