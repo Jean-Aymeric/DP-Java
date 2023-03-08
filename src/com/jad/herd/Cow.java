@@ -26,7 +26,7 @@ public abstract class Cow {
     }
 
     public final EatBehavior getEatBehavior() {
-        return eatBehavior;
+        return (EatBehavior) this.eatBehavior.clone();
     }
 
     public final void setEatBehavior(final EatBehavior eatBehavior) {
@@ -37,7 +37,7 @@ public abstract class Cow {
     }
 
     public final SpeakBehavior getSpeakBehavior() {
-        return speakBehavior;
+        return (SpeakBehavior) this.speakBehavior.clone();
     }
 
     public final void setSpeakBehavior(final SpeakBehavior speakBehavior) {

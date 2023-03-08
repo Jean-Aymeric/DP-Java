@@ -1,7 +1,6 @@
 package com.jad.herd;
 
 import com.jad.herd.behavior.eat.InThePastureBehavior;
-import com.jad.herd.behavior.speak.MooBehavior;
 import com.jad.herd.behavior.speak.MuuuBehavior;
 
 public class SpanishCow extends Cow {

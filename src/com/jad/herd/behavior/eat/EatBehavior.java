@@ -1,7 +1,7 @@
 package com.jad.herd.behavior.eat;
 
-import com.jad.herd.behavior.ICowBehavior;
+import com.jad.herd.behavior.CowBehavior;
 
-public interface EatBehavior extends ICowBehavior {
-    void eat();
+public abstract class EatBehavior extends CowBehavior {
+    public abstract void eat();
 }

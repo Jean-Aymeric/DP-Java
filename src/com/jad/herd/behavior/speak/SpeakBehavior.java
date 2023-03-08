@@ -1,7 +1,7 @@
 package com.jad.herd.behavior.speak;
 
-import com.jad.herd.behavior.ICowBehavior;
+import com.jad.herd.behavior.CowBehavior;
 
-public interface SpeakBehavior extends ICowBehavior {
-    void speak();
+public abstract class SpeakBehavior extends CowBehavior {
+    public abstract void speak();
 }

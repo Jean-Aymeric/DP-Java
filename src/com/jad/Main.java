@@ -1,8 +1,7 @@
 package com.jad;
 
 import com.jad.herd.*;
-import com.jad.herd.behavior.eat.AtThFootOfMountFujiBehavior;
-import com.jad.herd.behavior.speak.MeuhBehavior;
+import com.jad.herd.behavior.eat.EatBehavior;
 
 public class Main {
 
@@ -17,10 +16,17 @@ public class Main {
         herd.makeThemEat();
         herd.makeThemSpeak();
 
-        herd.getCowByName("Berthe").setEatBehavior(new AtThFootOfMountFujiBehavior());
-        herd.getCowByName("Berta").setSpeakBehavior(new MeuhBehavior());
-
+        herd.getCowByName("Berthe").setEatBehavior(herd.getCowByName("Bento").getEatBehavior());
+        herd.getCowByName("Berta").setSpeakBehavior(herd.getCowByName("Berthe").getSpeakBehavior());
+        herd.getCowByName("Betsy").setEatBehavior(new EatBehavior() {
+            @Override
+            public void eat() {
+                System.out.println(this.getCow().getName() + " mange de l'herbe dans le pré en regardant le train passer");
+            }
+        });
+        herd.getCowByName("Berta").setEatBehavior(herd.getCowByName("Betsy").getEatBehavior());
         herd.makeThemEat();
         herd.makeThemSpeak();
+
     }
 }
