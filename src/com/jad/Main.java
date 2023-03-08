@@ -1,8 +1,8 @@
 package com.jad;
 
 import com.jad.composite.CompositeProduct;
+import com.jad.composite.IProduct;
 import com.jad.composite.LeafProduct;
-import com.jad.composite.Product;
 
 public class Main {
 
@@ -15,5 +15,9 @@ public class Main {
         jewelryBox.addProduct(new LeafProduct("Bague"));
         jewelryBox.addProduct(new LeafProduct("Collier"));
         System.out.println(cart);
+
+        for (IProduct product : cart) {
+            System.out.println(product.getName());
+        }
     }
 }

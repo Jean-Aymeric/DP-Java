@@ -9,4 +9,9 @@ public class LeafProduct extends Product {
     protected final String toStringExtended() {
         return "";
     }
+
+    @Override
+    public ProductsIterable getProductsIterable() {
+        return new ProductsIterable(this);
+    }
 }

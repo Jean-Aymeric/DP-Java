@@ -1,5 +1,7 @@
 package com.jad.composite;
 
+import java.util.Iterator;
+
 public abstract class Product implements IProduct {
     private final String name;
 
@@ -18,4 +20,9 @@ public abstract class Product implements IProduct {
     }
 
     protected abstract String toStringExtended();
+
+    @Override
+    public final Iterator<IProduct> iterator() {
+        return this.getProductsIterable().iterator();
+    }
 }

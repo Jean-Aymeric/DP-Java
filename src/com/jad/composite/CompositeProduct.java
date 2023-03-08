@@ -22,4 +22,13 @@ public class CompositeProduct extends Product {
     public final void removeProduct(IProduct product) {
         this.subProducts.remove(product);
     }
+
+    @Override
+    public ProductsIterable getProductsIterable() {
+        ProductsIterable productsIterable = new ProductsIterable(this);
+        for (IProduct product : this.subProducts) {
+            productsIterable.addAll(product.getProductsIterable());
+        }
+        return productsIterable;
+    }
 }
