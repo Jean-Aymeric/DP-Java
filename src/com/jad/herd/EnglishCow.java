@@ -1,17 +1,10 @@
 package com.jad.herd;
 
+import com.jad.herd.behavior.eat.InThePastureBehavior;
+import com.jad.herd.behavior.speak.MooBehavior;
+
 public class EnglishCow extends Cow {
     public EnglishCow(final String name) {
-        super(name);
-    }
-
-    @Override
-    public void eat() {
-        System.out.println(this.getName() + " mange de l'herbe dans le pré");
-    }
-
-    @Override
-    public void speak() {
-        System.out.println(this.getName() + " : Moo");
+        super(name, new InThePastureBehavior(), new MooBehavior());
     }
 }

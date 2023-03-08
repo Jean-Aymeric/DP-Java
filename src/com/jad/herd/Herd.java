@@ -24,4 +24,13 @@ public class Herd {
             cow.speak();
         }
     }
+
+    public Cow getCowByName(final String name) {
+        for (final Cow cow : cows) {
+            if (cow.getName().equals(name)) {
+                return cow;
+            }
+        }
+        return null;
+    }
 }
