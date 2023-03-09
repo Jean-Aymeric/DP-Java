@@ -5,6 +5,7 @@ import com.jad.interpreter.ProductExpression;
 import com.jad.interpreter.RecipeContext;
 import com.jad.product.IProduct;
 import com.jad.product.Product;
+import com.jad.product.composite.CheckerBoard;
 import com.jad.product.composite.TicTacToe;
 import com.jad.product.leaf.*;
 import com.jad.product.operation.complex.Stack;

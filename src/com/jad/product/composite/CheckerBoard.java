@@ -6,22 +6,22 @@ import com.jad.product.Product;
 import com.jad.product.operation.complex.StickLeftToRight;
 import com.jad.product.operation.complex.StickTopToBottom;
 
-public class TicTacToe extends Product {
-    public TicTacToe() {
-        super("TicTacToe",
+public class CheckerBoard extends Product {
+    public CheckerBoard() {
+        super("Damier 3x3",
                 new ComplexOperationExpression(new StickTopToBottom(),
                         new ComplexOperationExpression(new StickLeftToRight(),
-                                new ProductExpression(new CrossSquare()),
+                                new ProductExpression(new BlackSquare()),
                                 new ProductExpression(new WhiteSquare()),
-                                new ProductExpression(new CircleSquare())),
+                                new ProductExpression(new BlackSquare())),
                         new ComplexOperationExpression(new StickLeftToRight(),
                                 new ProductExpression(new WhiteSquare()),
-                                new ProductExpression(new CrossSquare()),
-                                new ProductExpression(new CircleSquare())),
+                                new ProductExpression(new BlackSquare()),
+                                new ProductExpression(new WhiteSquare())),
                         new ComplexOperationExpression(new StickLeftToRight(),
+                                new ProductExpression(new BlackSquare()),
                                 new ProductExpression(new WhiteSquare()),
-                                new ProductExpression(new WhiteSquare()),
-                                new ProductExpression(new CrossSquare()))
+                                new ProductExpression(new BlackSquare()))
                 )
         );
     }
