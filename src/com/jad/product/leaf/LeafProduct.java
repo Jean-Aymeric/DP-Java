@@ -8,5 +8,15 @@ public abstract class LeafProduct extends Product {
         this.buildImage(color);
     }
 
+    protected LeafProduct(final String name) {
+        this(name, Product.EmptyPixel);
+    }
+
+    public void setColor(final char color) {
+        this.buildImage(color);
+    }
+
     protected abstract void buildImage(final char color);
+
+
 }

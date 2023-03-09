@@ -1,8 +1,14 @@
 package com.jad.product.leaf;
 
+import com.jad.product.Product;
+
 public class FilledSquare extends LeafProduct {
     public FilledSquare(final char color) {
         super("Carré rempli", color);
+    }
+
+    public FilledSquare() {
+        this(Product.EmptyPixel);
     }
 
     @Override

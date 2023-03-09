@@ -2,11 +2,10 @@ package com.jad.product.composite;
 
 import com.jad.interpreter.ComplexOperationExpression;
 import com.jad.interpreter.ProductExpression;
-import com.jad.product.Product;
 import com.jad.product.operation.complex.StickLeftToRight;
 import com.jad.product.operation.complex.StickTopToBottom;
 
-public class CheckerBoard extends Product {
+public class CheckerBoard extends CompositeProduct {
     public CheckerBoard() {
         super("Damier 3x3",
                 new ComplexOperationExpression(new StickTopToBottom(),

@@ -7,6 +7,10 @@ public class Cross extends LeafProduct {
         super("Croix", color);
     }
 
+    public Cross() {
+        this(Product.EmptyPixel);
+    }
+
     @Override
     protected void buildImage(final char color) {
         for (int column = 0; column < getWidth(); column++) {

@@ -7,6 +7,10 @@ public class FilledCircle extends LeafProduct {
         super("Cercle rempli", color);
     }
 
+    public FilledCircle() {
+        this(Product.EmptyPixel);
+    }
+
     @Override
     protected void buildImage(final char color) {
         for (int column = 0; column < getWidth(); column++) {

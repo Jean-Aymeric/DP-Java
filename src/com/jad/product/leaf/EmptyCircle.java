@@ -7,6 +7,10 @@ public class EmptyCircle extends LeafProduct {
         super("Cercle vide", color);
     }
 
+    public EmptyCircle() {
+        this(Product.EmptyPixel);
+    }
+
     @Override
     protected void buildImage(final char color) {
         for (int column = 0; column < getWidth(); column++) {

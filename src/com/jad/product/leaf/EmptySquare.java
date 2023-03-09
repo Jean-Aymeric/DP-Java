@@ -7,6 +7,10 @@ public class EmptySquare extends LeafProduct {
         super("Carré vide", color);
     }
 
+    public EmptySquare() {
+        this(Product.EmptyPixel);
+    }
+
     @Override
     protected void buildImage(final char color) {
         for (int column = 0; column < getWidth(); column++) {

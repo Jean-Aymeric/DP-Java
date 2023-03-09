@@ -2,6 +2,7 @@ package com.jad.product;
 
 import com.jad.interpreter.RecipeContext;
 import com.jad.interpreter.RecipeExpression;
+import com.jad.product.recipeparser.RecipeParser;
 
 public class Product implements IProduct {
     private final String name;
@@ -41,6 +42,10 @@ public class Product implements IProduct {
         this.resetImage();
         this.description = context.getProduct().getDescription();
         this.copyImage(context.getProduct());
+    }
+
+    public Product(final String name, final String recipe) {
+        this(name, RecipeParser.Parse(recipe));
     }
 
     protected void copyImage(final IProduct other) {
