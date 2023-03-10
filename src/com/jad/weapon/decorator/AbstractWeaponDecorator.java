@@ -4,7 +4,7 @@ import com.jad.weapon.AttackType;
 import com.jad.weapon.IWeapon;
 
 public abstract class AbstractWeaponDecorator implements IWeapon {
-    private IWeapon weapon;
+    private final IWeapon weapon;
 
     public AbstractWeaponDecorator(final IWeapon weapon) {
         this.weapon = weapon;
