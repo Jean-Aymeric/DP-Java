@@ -2,10 +2,11 @@ package com.jad.weapon.decorator;
 
 import com.jad.weapon.AttackType;
 import com.jad.weapon.IWeapon;
+import com.jad.weapon.rule.BlessedCursedRule;
 
 public class Blessed extends AbstractWeaponDecorator {
     public Blessed(final IWeapon weapon) {
-        super(weapon);
+        super(weapon, "Blessed", new BlessedCursedRule());
     }
 
     @Override

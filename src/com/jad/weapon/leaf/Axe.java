@@ -5,6 +5,6 @@ import com.jad.weapon.AttackType;
 public class Axe extends LeafWeapon {
 
     public Axe() {
-        super("Hache", 5, AttackType.Sharp);
+        super("Axe", "Hache", 5, AttackType.Sharp);
     }
 }

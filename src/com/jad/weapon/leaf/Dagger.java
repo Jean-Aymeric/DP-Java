@@ -5,6 +5,6 @@ import com.jad.weapon.AttackType;
 public class Dagger extends LeafWeapon {
 
     public Dagger() {
-        super("Dague", 3, AttackType.Piercing);
+        super("Dagger", "Dague", 3, AttackType.Piercing);
     }
 }

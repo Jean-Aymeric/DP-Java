@@ -8,4 +8,6 @@ public interface IWeapon {
     AttackType getAttackType();
 
     String attack();
+
+    Boolean isKey(String key);
 }

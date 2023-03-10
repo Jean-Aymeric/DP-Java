@@ -10,6 +10,6 @@ public interface Specification<E> {
 
 	Specification<E> and(final Specification<E> specification);
 
-	Specification<E> not(final Specification<E> specification);
+	Specification<E> not();
 
 }

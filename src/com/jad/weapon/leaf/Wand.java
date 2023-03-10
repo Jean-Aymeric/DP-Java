@@ -4,6 +4,6 @@ import com.jad.weapon.AttackType;
 
 public class Wand extends LeafWeapon {
     public Wand() {
-        super("Baguette", 2, AttackType.Magic);
+        super("Wand", "Baguette", 2, AttackType.Magic);
     }
 }

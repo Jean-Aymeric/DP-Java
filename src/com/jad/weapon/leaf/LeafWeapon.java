@@ -8,8 +8,8 @@ public class LeafWeapon extends Weapon {
     private final int damage;
     private final AttackType attackType;
 
-    public LeafWeapon(String name, int damage, AttackType attackType) {
-        super();
+    public LeafWeapon(final String key, String name, int damage, AttackType attackType) {
+        super(key);
         this.name = name;
         this.damage = damage;
         this.attackType = attackType;

@@ -18,7 +18,7 @@ public abstract class CompositeSpecification<E> implements Specification<E> {
 	}
 
 	@Override
-	public Specification<E> not(final Specification<E> specification) {
+	public Specification<E> not() {
 		return new NotSpecification<>(this);
 	}
 
